@@ -1,0 +1,78 @@
+(deftemplate fruta
+	(slot Diametro)
+	(slot Forma)
+	(slot Color)
+	(slot NumSemilla)
+	(slot ClaseFruta)
+	(slot ClaseSemilla)	
+)
+
+
+(defrule frutaBanana
+	(fruta (Diametro no)(ClaseFruta no)(Color verde)(ClaseSemilla no)(Forma alargada)(NumSemilla no))
+	=> (printout t "Fruta Banana" crlf)
+)
+(defrule frutaBanana2
+	(fruta (Diametro no)(ClaseFruta no)(Color amarillo)(ClaseSemilla no)(Forma alargada)(NumSemilla no))
+	=> (printout t "Fruta Banana" crlf)
+)
+(defrule frutaSandia
+	(fruta (Diametro mayora1.6)(ClaseFruta planta)(Color verde)(ClaseSemilla no)(Forma redonda)(NumSemilla no))
+	=> (printout t "Fruta Sandia" crlf)
+)
+(defrule frutaSandia2
+	(fruta (Diametro mayora1.6)(ClaseFruta planta)(Color verde)(ClaseSemilla no)(Forma ovalada)(NumSemilla no))
+	=> (printout t "Fruta Sandia" crlf)
+)
+(defrule frutaMelon
+	(fruta (Diametro mayora1.6)(ClaseFruta planta)(Color amarillo)(ClaseSemilla no)(Forma redonda)(NumSemilla no))
+	=> (printout t "Fruta Melón" crlf)
+)
+(defrule frutaAlbaricoque
+	(fruta (Diametro manora1.6)(ClaseFruta arbol)(Color naranja)(ClaseSemilla hueso)(Forma redonda)(NumSemilla uno))
+	=> (printout t "Fruta Albaricoque" crlf)
+)
+(defrule frutaNaranja
+	(fruta (Diametro manora1.6)(ClaseFruta arbol)(Color naranja)(ClaseSemilla multiple)(Forma redonda)(NumSemilla mayorauno))
+	=> (printout t "Fruta Naranja" crlf)
+)
+(defrule frutaCereza
+	(fruta (Diametro manora1.6)(ClaseFruta arbol)(Color rojo)(ClaseSemilla hueso)(Forma redonda)(NumSemilla uno))
+	=> (printout t "fruta Cereza" crlf)
+)
+(defrule frutaMelocoton
+	(fruta (Diametro manora1.6)(ClaseFruta arbol)(Color naranja)(ClaseSemilla hueso)(Forma redonda)(NumSemilla uno))
+	=> (printout t "fruta Melocoton" crlf)
+)
+
+
+
+(
+    defrule lectura-fruta "Ingrese caracteristicas"
+    =>
+    (printout t "¿que diametro es? ")
+    (bind ?diam (read))  no
+    (printout t "¿que forma es?")
+    (bind ?dc (read))
+    (printout t "¿ numero de semillas?")
+    (bind ?ns (read))
+    (printout t "¿color?")
+    (bind ?co (read))
+    (printout t "¿clase fruta?")
+    (bind ?cf (read))
+    (printout t "¿clase semilla?")
+    (bind ?cs (read))
+
+    (
+        assert(
+            fruta
+            (Diametro ?diam )
+            (Forma ?dc )
+            (Color ?co )
+            (NumSemilla ?ns )
+            (ClaseFruta ?cf)
+            (ClaseSemilla ?cs)
+        )
+        
+    )
+)

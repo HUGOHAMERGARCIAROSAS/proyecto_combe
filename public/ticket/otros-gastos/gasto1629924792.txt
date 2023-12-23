@@ -1,0 +1,15 @@
+Agregar la columna de factura(Pago del saldo)
+
+Filtrar pagos por terceros y proveedores
+Agregar una columna de estado
+Viajes en curso, viajes finalizados (dasboard)
+Cuanto debo y cuanto pago en el dasboard
+
+Pasar a vue los documentos,los registros del servicio
+Estructurar bien la progracion de unidad (from)
+Guardar documentos
+Agregar varios viajes en un solo servicio
+Pdf
+
+agregar gastos generales*******
+

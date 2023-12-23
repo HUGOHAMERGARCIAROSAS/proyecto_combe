@@ -1,0 +1,12 @@
+-Agregar a la base de datos si el chofer es un tercero(1)H
+-Cambiar la pantalla de nueva orden(X)
+-Se esta registrando una empresa terciaria pero no se esta listando en la orden(1)M
+-Gastos (ver)(H)
+-Saldo()(M)
+-Filtrar (Cobros pendientes)(X)
+-LIstar los productos registrados en la orden(H)
+-registrar centro de costos(M)
+-Agregar a una compra el centro de costos y vehiculo(H)
+-Agregar el monto bien en el pago (H)
+-Agregar el cobro de un servicio terciario(H)
+-¿Como saber ?

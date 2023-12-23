@@ -1,0 +1,31 @@
+(parentesco (padre Luis)(hijo Daniel))->hecho
+---------------------------------------
+DECLARAS LA CLASE
+(deftemplate parentesco(slot padre)(slot hijo))->para crear la plantilla de hechos
+(deftemplate Persona(slot nombre(type SYMBOL))(slot edad (type INTEGER)))
+(list-deftemplates *)->Lista hechos
+ppdeftemplate parentesco->ver como esta definido mi hecho
+(undeftemplate parentesco)->elimina el hecho parentesco
+(assert (parentesco(padre Luis)(hijo Daniel)))->Agregar un hecho a la memoria assert (f-1):
+(facts)->lista los hechos 
+(modify 1 (hijo Jorge))->1 indica el numero del factor(f-1)
+(duplicate 2(hijo Fernando))->Duplica el hecho pero al hijo le pone Fernando
+(retract 3)->elimine hecho 3
+(clear)->elimina todo
+-----------------------
+FUNCION
+(deffunction suma(?a ?b)(printout t(+ ?a ?b)crlf))->defino funcion
+(suma 5 3)->ejecuto la funcion
+-------------------------
+REGLA
+(defrule Lluvia(Estalloviendo si)(TengoParaguas no) => (printout t "Me mojare")crlf)->Definir una regla
+///para ejecutar un regla es assert(se le da el antecedente)
+(assert (Estalloviendo si)(TengoParaguas no))->inserto lo que tengo
+(run)->ejecutar el resultado de las reglas anterior
+-------------------------
+(list-defrules)->listado de reglas
+(ppdefrule Lluvia)->mostrar como es la estructura de mi regla
+(undefrule Lluvia)->eliminar las reglas
+33:48
+Ver->pagina 32
+

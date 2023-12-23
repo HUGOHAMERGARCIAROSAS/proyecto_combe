@@ -1,0 +1,65 @@
+--REQUERIMIENTOS ABASTECIMIENTO--
+
+- Roles:(FALTA*)
+  . Jefe de logistica.
+  - Asistente
+  . Jefe de Almacen.
+  - Asistente
+  . Usuario de patrimonio.
+
+* AREA LOGISTICA 
+
+- Registro de requerimientos.
+- Registro de solicitud de Cotizacion.
+
+ Crear cotizacion
+ Ingresamos los montos por cada proveedor(No muestra el monto total)
+Seleccionar ver cuadro comparativo(No muestra monto total)
+ Seleccionar el ganador
+       .ESTADO:Finalizado
+
+Crear cotización
+
+- Registro de cuadro comparativo (proveedores).
+
+ OREN DE COMPRA
+- Registro de ordenes de compra (importa desde requerimientos o cuadro comparativo).
+	(Luego de seleccionar el ganador nos vamos a seleccionar 	requerimiento en ordenes de compra)
+	ESTADO:Pendiente de atención
+
+
+- Emision de ordenes de servicio (importa desde requerimientos o cuadro comparativo).
+- Informe de conformidad de compras y servicios.
+- Reporte de ordenes de compras, servicios y otros.
+- Administrar y supervisar el registro de proveedores del catalogo de bienes y servicios.
+- Registro de necesidades y especificaciones tecnicas para la adquisiciones y materiales de oficina de cada área. 
+- Imprimir reportes peridodicamente (semanal, mensual, trimestral, etc.) segun se requiera.
+- Supervisar en tiempo real los gastos realizados por cada area u oficina, cuanto se esta gastando en un determinado proyecto y que cantidad 
+de matariales se esta usando, es decir, se tendra la informacion instantanea con reportes exactos.
+
+* AREA ALMACEN
+
+- Registro de los materiales que entran y salen de almacen.
+- Control de stock mediante el movimiento de entradas y salidas.
+- Reporte de registro de NEA (Nota de entrada de almacen) y PECOSA (documento que acredita
+la salida de un bien del almacen de la municipalidad).
+- Reporte de entrega de productos o bienes a cada area.
+- Categorizar productos:
+  . Oficina
+  . Petróleo
+  . Materiales de obras por administracion directa
+  . Materiales de apoyos comunales
+  - Tener un stock actualizado y que muestre existencias en tiempo real.
+
+* AREA PATRIMONIO
+
+- Registro de todos los bienes asignados a las diferentes areas de la municipalidad.
+- Programación de entrada y salida de unidades moviles.
+- Reportes del estado actual de los bienes y de programación de entrada y salida de unidades moviles.
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+alter TRIGGER tU_insertadetalle
+ON detadoc FOR update
+AS
+select * from inserted
+select * from deleted 
+UPDATE p SET StockAc = StockAc - i.Cantidad + d.Cantidad
+FROM producto p INNER JOIN inserted i ON i.producto = p.producto
+				INNER JOIN deleted d ON d.Documento = i.Documento AND d.TipoDoc=i.TipoDoc and d.Producto=i.Producto
+go
+alter TRIGGER ti_insertadetalle
+ON detadoc FOR INSERT
+AS
+select * from inserted
+UPDATE p SET StockAc = StockAc - i.Cantidad
+FROM producto p INNER JOIN inserted i ON i.producto = p.producto
+go

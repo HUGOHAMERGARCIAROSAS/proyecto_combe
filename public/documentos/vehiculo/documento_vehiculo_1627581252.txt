@@ -1,0 +1,15 @@
+ESCRITORIO REMOTO:
+52.117.238.5
+Administrator
+lE93QD8HJCH7
+
+
+SQL
+SERVIDOR: 52.117.238.5
+usuario: sa
+contraseña: wscont2019
+
+MYSQL: 
+host: 52.117.238.5
+user: wsfactElect
+pass: wsfact2019@

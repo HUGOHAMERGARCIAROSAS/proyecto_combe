@@ -1,0 +1,1 @@
+UPDATE sartimbamba.measurement_units SET deleted_at = Null WHERE id = 1;
