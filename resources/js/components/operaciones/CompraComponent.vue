@@ -7,7 +7,7 @@
                         <div class="header">
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <label>Seleccionar Área: </label>
+                                    <label>Seleccionar Áreas: </label>
                                     <select class="form-control form-control-sm" v-model="operacion.id_area" required>
                                             <option value="0">SELECCIONAR AREA</option>
                                             <option v-for="(area,index) in areas" :value="area.id"  :key="index" >{{area.descripcion}}</option>

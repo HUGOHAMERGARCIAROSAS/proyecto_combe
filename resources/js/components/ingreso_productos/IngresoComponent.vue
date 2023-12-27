@@ -24,7 +24,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <h5><strong>Lista de Productos</strong></h5>
+                            <h5><strong>Lista de Productoss</strong></h5>
                             <div class="col-lg-12" align="right">
                                 <button type="button" class="btn btn-success btn-elevate btn-pill"
                                         @click="abrirModalDetalleProducto()">Agregar Item

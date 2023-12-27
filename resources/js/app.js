@@ -27,6 +27,13 @@ Vue.component('facturacion-detalle-modal-compra-component', require('./component
 
 Vue.component('ingreso-productos-component', require('./components/ingreso_productos/IngresoComponent.vue').default);
 Vue.component('detalle-modal-ingreso-component', require('./components/ingreso_productos/DetalleModalIngresoComponent.vue').default);
+
+
+//COTIZACIONES
+
+Vue.component('cotizaciones-create-component', require('./components/cotizaciones/CotizacionesComponent.vue').default);
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -63,8 +63,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/lista-areas-text', 'Admin\CombosController@getAreasText')->name('lista-areas-text');
 Route::get('/lista-solicitante-text', 'Admin\CombosController@getSolicitantesText')->name('lista-solicitante-text');
 Route::get('/lista-productos-text', 'Admin\CombosController@getProductosText')->name('lista-producto-text');
-Route::get('/productos-api-search/{id}', 'Admin\CombosController@getProductosSearch')->name('lista-producto-search');
+Route::get('/producto-api-search/{id}', 'Admin\CombosController@getProductosSearch')->name('lista-producto-search');
 Route::get('/lista-contratista-text', 'Admin\CombosController@getContratistaText')->name('lista-contratista-text');
+Route::get('/lista-proveedores-text', 'Admin\CombosController@getProveedoresSearch')->name('proveedores-search');
+Route::get('/proveedor-api-search/{id}', 'Admin\CombosController@getProveedorSearch')->name('proveedor-search');
+
 
 
 //INGRESO PRODUCTOS
@@ -80,6 +83,17 @@ Route::get('ingreso-productos-list-pdf/{id}', 'Admin\IngresoProductosController@
 Route::get('/ingreso-productos-detalle', 'Admin\IngresoProductosController@ingresoProductosDetalle')->name('ingresoproductos.detalle');
 
 Route::post('/ingreso-productos-a-kardex/{id}', 'Admin\IngresoProductosController@ingresoProductoKardex')->name('ingreso.producto.kardex');
+
+
+
+//COTIZACIONES
+
+Route::get('/cotizaciones_list', 'Admin\CotizacionesController@index')->name('cotizaciones.index');
+Route::get('/cotizaciones_create', 'Admin\CotizacionesController@create')->name('cotizaciones.create');
+Route::post('/store-ingreso-cotizacion', 'Admin\CotizacionesController@store')->name('cotizaciones.store');
+
+
+
 
 
 

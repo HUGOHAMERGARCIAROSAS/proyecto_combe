@@ -53,6 +53,7 @@
                                 <li class="active"><a href="{{route('categorias.index')}}">Categorías</a></li>
                                 <li class="active"><a href="{{route('unidades.index')}}">Unidad Medida</a></li>
                                 <li class="active"><a href="{{route('productos.index')}}">Productos</a></li>
+                                <li class="active"><a href="{{route('cotizaciones.index')}}">Cotizaciones</a></li>
                                 <li class="active"><a href="{{route('requerimientos.index')}}">Requerimientos</a></li>
                                 <li class="active"><a href="{{route('ingresoproductos.detalle')}}">Ingreso de Productos</a></li>
                             </ul>
