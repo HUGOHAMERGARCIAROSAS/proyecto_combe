@@ -10,35 +10,43 @@
         <form action="{{route('proveedores.store')}}" method="POST">
             {{ csrf_field() }}
             <div class="modal-body">
-                <style>
-                    .row{
-                        padding-top: 10px;
-                    }
-                </style>
-                <div class="row">
+                <div class="row mb-2">
+                    <div class="col-md-12">
+                        <label for="">Nombres:</label>
+                        <select name="persona_ID" id="" class="form-control">
+                            <option value="0">Seleccione Persona</option>
+                            @foreach ($personas as $item)
+                                <option value="{{$item->persona_ID}}">{{$item->nombres}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-2">
                     <div class="col-md-12">
                         <label for="">Razón Social:</label>
                         <input type="text" class="form-control" name="razon_social" required>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mb-2">
                     <div class="col-md-6">
                         <label for="">RUC:</label>
-                        <input type="number" class="form-control"  name="ruc" required>
+                        <input type="text" class="form-control"  name="ruc" required>
                     </div>
                     <div class="col-md-6">
                         <label for="">Télefono:</label>
-                        <input type="number" class="form-control" name="telefono" required>
+                        <input type="text" class="form-control" name="telefono" required>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="row mb-2">
+                    <div class="col-md-12">
                         <label for="">Dirección:</label>
                         <input type="text" class="form-control" name="direccion" required>
                     </div>
-                    <div class="col-md-6">
-                        <label for="">Email:</label>
-                        <input type="text" class="form-control" name="email" required>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-12">
+                        <label for="">Email Proveedor:</label>
+                        <input type="email" class="form-control" name="email" required>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@ class Proveedor extends Model
     protected $primaryKey = 'id_proveedor';
     protected $fillable = [
         'nombres', 'ruc', 'estado','direccion','telefono',
-        'email'
+        'email','persona_ID'
     ];
 
 }

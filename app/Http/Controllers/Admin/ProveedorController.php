@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Proveedor;
+use DB;
 
 class ProveedorController extends Controller
 {
@@ -13,11 +14,16 @@ class ProveedorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        $proveedores = Proveedor::get()->where('estado','1');
-        // dd($proveedores);
-        return view('proveedores.index')->with(compact('proveedores'));
+        $proveedores = Proveedor::get();
+        $personas = DB::select("Select CONCAT(paterno,' ',materno,' ',nombres ) as nombres, p.persona_ID from persona p where estado=1 order by paterno asc");
+        return view('proveedores.index')->with(compact('proveedores','personas'));
     }
 
     /**
@@ -25,10 +31,6 @@ class ProveedorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -45,6 +47,7 @@ class ProveedorController extends Controller
         $proveedor->telefono  = $request->telefono;
         $proveedor->ruc  = $request->ruc;
         $proveedor->email  = $request->email;
+        $proveedor->persona_ID  = $request->persona_ID;
         $proveedor->save();
         return back()->with('guardar','ok');
     }
@@ -86,6 +89,7 @@ class ProveedorController extends Controller
         $proveedor->telefono  = $request->telefono;
         $proveedor->ruc  = $request->ruc;
         $proveedor->email  = $request->email;
+        $proveedor->persona_ID  = $request->persona_ID;
         $proveedor->save();
         return back();
     }

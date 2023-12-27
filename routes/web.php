@@ -2,24 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 }
 
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('/');
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+
+
 Route::post('login', 'Auth\LoginController@login');
+
+
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Auth::routes();
 
@@ -53,9 +46,7 @@ Route::get('/nueva-compra', 'Admin\RequerimientoController@compra')->name('nueva
 Route::post('/store-compra', 'Admin\RequerimientoController@storeCompra')->name('store.compra');
 Route::get('/req_productos-api-search/{id}', 'Admin\RequerimientoController@getProductoRequerimientoSearch')->name('lista-requerimiento-producto-search');
 
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 
@@ -69,33 +60,42 @@ Route::get('/lista-proveedores-text', 'Admin\CombosController@getProveedoresSear
 Route::get('/proveedor-api-search/{id}', 'Admin\CombosController@getProveedorSearch')->name('proveedor-search');
 
 
-
 //INGRESO PRODUCTOS
 Route::get('/ingreso-productos-text', 'Admin\IngresoProductosController@ingresoProductosText')->name('ingresoproductos.index');
-
-
 Route::get('/operacionesListadoIngresoProductos', 'Admin\IngresoProductosController@listadoIngresoProductos')->name('listado.ingreso_productos');
 Route::post('/store-ingreso-productos', 'Admin\IngresoProductosController@storeIngresoProducto')->name('store.ingreso_productos');
 Route::get('/productos-api-search/{id}', 'Admin\IngresoProductosController@searchProducto')->name('productos.api.search');
 Route::get('ingreso-productos-list-pdf/{id}', 'Admin\IngresoProductosController@exportPdf')->name('ingreso_productos.export.pdf');
-
-
 Route::get('/ingreso-productos-detalle', 'Admin\IngresoProductosController@ingresoProductosDetalle')->name('ingresoproductos.detalle');
-
 Route::post('/ingreso-productos-a-kardex/{id}', 'Admin\IngresoProductosController@ingresoProductoKardex')->name('ingreso.producto.kardex');
 
 
-
 //COTIZACIONES
-
 Route::get('/cotizaciones_list', 'Admin\CotizacionesController@index')->name('cotizaciones.index');
 Route::get('/cotizaciones_create', 'Admin\CotizacionesController@create')->name('cotizaciones.create');
 Route::post('/store-ingreso-cotizacion', 'Admin\CotizacionesController@store')->name('cotizaciones.store');
 
 
+//USUARIOS
+Route::get('/usuarios_index', 'Admin\UsuariosController@index')->name('usuarios.index');
+route::post('/usuarios_store', 'Admin\UsuariosController@store')->name('usuarios.store');
+Route::put('/usuarios_update/{id}', 'Admin\UsuariosController@update')->name('usuarios.update');
+Route::put('/usuarios_destroy/{id}', 'Admin\UsuariosController@destroy')->name('usuarios.destroy');
+Route::put('/personas_update_password/{id}', 'Admin\UsuariosController@updatePassword')->name('usuarios.updatePassword');
 
 
+//PERSONA
+Route::get('/personas_index', 'Admin\PersonasController@index')->name('personas.index');
+Route::post('/personas_store', 'Admin\PersonasController@store')->name('personas.store');
+Route::put('/personas_update/{id}', 'Admin\PersonasController@update')->name('personas.update');
+Route::put('/personas_destroy/{id}', 'Admin\PersonasController@destroy')->name('personas.destroy');
 
+
+//AREAS
+Route::get('/areas_index', 'Admin\AreasController@index')->name('areas.index');
+Route::post('/areas_store', 'Admin\AreasController@store')->name('areas.store');
+Route::put('/areas_update/{id}', 'Admin\AreasController@update')->name('areas.update');
+Route::put('/areas_destroy/{id}', 'Admin\AreasController@destroy')->name('areas.destroy');
 
 
 

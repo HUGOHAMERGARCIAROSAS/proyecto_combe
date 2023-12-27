@@ -40,10 +40,10 @@
                         <li  id="personal-li">
                             <a href="#Personal" class="has-arrow"><i class="icon-globe"></i> <span>ADMINISTRACION</span></a>
                             <ul>
-                                <li class="active" id="listado-rol"><a href="">Roles y Permisos</a></li>
-                                <li class="active"><a href="">Usuarios</a></li>
-                                <li class="active"><a href="">Áreas</a></li>
-                                <li class="active"><a href="">Almacen</a></li>
+                                <li class="active" id="listado-rol"><a href="{{route('personas.index')}}">Roles y Permisos</a></li>
+                                <li class="active"><a href="{{route('personas.index')}}">Personas</a></li>
+                                <li class="active"><a href="{{route('usuarios.index')}}">Usuarios</a></li>
+                                <li class="active"><a href="{{route('areas.index')}}">Áreas</a></li>
                                 
                             </ul>
                         </li>
