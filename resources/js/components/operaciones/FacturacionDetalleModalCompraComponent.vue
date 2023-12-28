@@ -13,12 +13,12 @@
                             <label>Producto:</label>
                                 <select id="2" class="form-control" v-model="selectProducto" @change="changeProducto($event)" @select="mySelectEvent2($event)" > 
                                         <option value="0">SELECCIONAR PRODUCTO</option>
-                                        <option v-for="(item, index) in productos" :key="index" v-bind:value="item.id">{{item.texto}}</option>
+                                        <option v-for="item in productos" :key="item.id" v-bind:value="item.id">{{item.texto}}</option>
                                 </select>
                         </div>
                          <div class="col-sm-6">
                                 <label>Unidades en Almacen: </label>
-                                <input type="texto" class="form-control" v-model="detalle.cantidad" required>
+                                <input type="number" class="form-control" v-model="detalle.cantidad" >
                         </div>
                         
                     </div>
@@ -26,15 +26,15 @@
                     <div class="row">
                         <div class="col-sm-4">
                                 <label>Precio Unitario: </label>
-                                <input type="texto" class="form-control" v-model="detalle.precio_unitario" required>
+                                <input type="number" class="form-control" v-model="detalle.precio_unitario" >
                         </div>
                          <div class="col-sm-4">
                                 <label>Unidades a Solicitar: </label>
-                                <input type="texto" class="form-control" v-model="detalle.unidades" required>
+                                <input type="number" class="form-control" v-model="detalle.unidades" >
                         </div>
                         <div class="col-sm-4">
                                 <label>Importe: </label>
-                                <input type="texto" class="form-control" v-model="detalle.importe" required>
+                                <input type="number" class="form-control" v-model="detalle.importe" >
                         </div>
                     </div>
                 </div>
@@ -57,6 +57,7 @@
 
 <script>
     import axios from 'axios'
+    import Swal from 'sweetalert2';
      import Select2 from 'v-select2-component';
 
     export default {
@@ -86,25 +87,42 @@
             },
             changeProducto(event) {
                 let value = this.selectProducto;
-                axios.get('/req_productos-api-search/' + value ).then(({data}) => {
-                    self = this;
-                    self.detalle.id = data.id_producto;
-                    self.detalle.nombre = data.descripcion;
+                axios.get('/req_productos-api-search/' + value )
+                .then(({data}) => {
+                    this.detalle.id = data.id_producto;
+                    this.detalle.nombre = data.descripcion;
                 }).catch((error) => {
                     console.log(error);
                 });
             },
             guardarDetalleFacturacion() {
-                self = this;
                 // self.detalle.importe = parseFloat(this.calcularImporteDetalleProducto).toFixed(2);
-                console.log(self.detalle);
-                Bus.$emit("DetalleFacturacion", self.detalle);
-                self.closeModalDetalleFacturacion();
+                if(this.selectProducto ==='0'){
+                    Swal.fire({
+                        icon:'error',
+                        title:'Por favor selecciona un producto',
+                    });
+                    return
+                }
+                if(
+                    this.detalle.cantidad===''||
+                    this.detalle.precio_unitario===''||
+                    this.detalle.unidades===''||
+                    this.detalle.importe===''
+                ) {
+                    Swal.fire({
+                        icon:'error',
+                        title:'Por favor completa todos los campos',
+                    });
+                    return;
+                }
+                console.log(this.detalle);
+                Bus.$emit("DetalleFacturacion", this.detalle);
+                this.closeModalDetalleFacturacion();
             },
             
             closeModalDetalleFacturacion() {
-                self = this;
-                self.limpiarData();
+                this.limpiarData();
                 $('#modalDetalleFacturacion').modal('hide');
                 //  $("#modalNotaCredito").modal('show');
             },
@@ -112,13 +130,12 @@
                 console.log({id, text})
             },
             limpiarData(){
-                self = this;
-                self.detalle.precio_unitario = '';
-                self.detalle.nombre = '';
-                self.detalle.unidades = '';
-                self.detalle.cantidad= '';
-                self.detalle.codigo = '';
-                self.selectProducto = 0;
+                this.detalle.precio_unitario = '';
+                this.detalle.nombre = '';
+                this.detalle.unidades = '';
+                this.detalle.cantidad= '';
+                this.detalle.codigo = '';
+                this.selectProducto = 0;
             }
 
         },

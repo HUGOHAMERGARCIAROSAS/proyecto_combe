@@ -79,7 +79,7 @@
                                         <td class="text-center">
                                             <button type="button"
                                                     class="btn btn-danger btn-elevate btn-circle btn-icon btn-sm"
-                                                    >
+                                                    @click='eliminarItem(index)'>
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </td>
@@ -147,6 +147,10 @@
                     console.log(error);
                 });
             },
+            
+            eliminarItem(index){
+                this.detallefacturacion.splice(index,1);
+            },
             abrirModalDetalleProducto() {
                 $('#modalDetalleFacturacion').modal('show');
             },
@@ -166,7 +170,6 @@
                 if (!existeProducto) {
                     this.detallefacturacion.push(JSON.parse(JSON.stringify(data)));
                 }
-                this.clearProducto();
             }
 
         },

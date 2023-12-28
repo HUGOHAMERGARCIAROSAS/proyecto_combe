@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Orden;
+use App\Models\Productos;
 
 class RequerimientoController extends Controller
 {
@@ -13,6 +14,9 @@ class RequerimientoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    protected $table = 'productos';
+    
     public function index()
     {
         $requerimientos = Orden::get()->where('estado','1');
