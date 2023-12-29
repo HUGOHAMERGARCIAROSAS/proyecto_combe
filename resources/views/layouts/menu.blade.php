@@ -44,6 +44,7 @@
                                 <li class="active"><a href="{{route('personas.index')}}">Personas</a></li>
                                 <li class="active"><a href="{{route('usuarios.index')}}">Usuarios</a></li>
                                 <li class="active"><a href="{{route('areas.index')}}">Áreas</a></li>
+                                <li class="active"><a href="{{route('roles.index')}}">Roles y Permisos</a></li>
                                 
                             </ul>
                         </li>

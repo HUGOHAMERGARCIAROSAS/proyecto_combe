@@ -99,4 +99,7 @@ Route::put('/areas_destroy/{id}', 'Admin\AreasController@destroy')->name('areas.
 
 
 
+//ROLES
+Route::resource('/roles', 'Admin\RoleController')->names('roles');
+
 
