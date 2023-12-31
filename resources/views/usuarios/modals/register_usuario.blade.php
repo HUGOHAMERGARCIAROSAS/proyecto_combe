@@ -1,6 +1,6 @@
 <div class="modal fade" id="registerUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div class="modal-content modal-lg">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">REGISTRAR USUARIO</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -42,10 +42,21 @@
                         </select>
                     </div>
                 </div>
+                <div>
+                    <div class="col-md-12">
+                        <label for="">Rol:</label>
+                        <option value="0">Seleccione un rol</option>
+                        <select name="role_id" class='form-control'>
+                            @foreach ($roles as $rol)
+                                <option value="{{$rol->id}}">{{$rol->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
         </form>
       </div>
