@@ -29,6 +29,8 @@ Vue.component('ingreso-productos-component', require('./components/ingreso_produ
 Vue.component('detalle-modal-ingreso-component', require('./components/ingreso_productos/DetalleModalIngresoComponent.vue').default);
 
 
+Vue.component('salida-productos-component', require('./components/salida_productos/SalidaComponent.vue').default);
+Vue.component('detalle-modal-salida-component', require('./components/salida_productos/DetalleModalSalidaComponent.vue').default);
 //COTIZACIONES
 
 Vue.component('cotizaciones-create-component', require('./components/cotizaciones/CotizacionesComponent.vue').default);

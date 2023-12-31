@@ -7,35 +7,35 @@
     @include('layouts.welcome')
     <div class="row clearfix">
         <div class="col-lg-12">
-            <div class="card" style="background: #FFFFFF">
-                <div class="header" >
+            <div class="car" style="background: #FFFFFF">
+                <div class="header">
                     <div style="float: left">
-                        <h2>INGRESO DE PRODUCTOS</h2>
+                        <h2>SALIDA DE PRODUCTOS</h2>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="body">
-        <div class="table-responsive"  id="app" >
+        <div class="table-responsive" id="app">
             <div class="col-lg-12 col-md-6 col-sm-12">
                 <div class="card">
                     <div class="body text-center">
-                        <div class="chart easy-pie-chart-1" data-percent="100">
+                        <div class="charty easy-pie-chart-1" data-percent="100">
                             <span>
-                                <img src="{{asset('img/success.jpg')}}" alt="" class="rounded-circle"/>
+                                <img src="{{asset('img/success.jpg')}}" alt="" class="rounded-circle">
                             </span>
                         </div>
-                        <h6>FORMATO PARA SOLICITAR INGRESO DE PRODUCTOS A ALMACEN </h6>
+                        <h6>FORMATO PARA SOLICITAR SALIDA DE PRODUCTOS DE ALMACEN</h6>
                         <ul class="social-links list-unstyled">
                             <li style="font-size: 15px">Número: {{$productos[0]->num_documento}}</li>
-                            <li style="font-size: 15px">Año {{$productos[0]->anio}}</li>
+                            <li style="font-size: 15px">Año {{$producto[0]->anio}}</li>
                             <li style="font-size: 15px">Fecha: {{$productos[0]->fecha}}</li>
                             <li style="font-size: 15px">Detalle: {{$productos[0]->observaciones}}</li>
                         </ul>
                         <br>
                         <h6>
-                            <a href="/ingreso-productos-list-pdf/{{$productos[0]->id_producto}}" class="btn btn-success" target="_BLANK" >DESCARGAR FORMATO</a>
+                            <a href="/salida-productos-list-pdf/{{$productos[0]->id_producto}}" class="btn tbn-success" target="_BLANK">DESCARGAR FORMATO</a>
                         </h6>
                     </div>
                 </div>

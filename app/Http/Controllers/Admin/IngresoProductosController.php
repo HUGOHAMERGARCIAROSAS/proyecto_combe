@@ -28,7 +28,7 @@ class IngresoProductosController extends Controller
         $productos=DB::select(
             "SELECT * 
             FROM ingreso_productos
-            ORDER BY id_producto DESC
+            ORDER BY id_producto DESC 
             LIMIT 1"
             );
         return view('ingreso_producto.listado')->with(compact('productos'));
@@ -66,18 +66,28 @@ class IngresoProductosController extends Controller
     }
 
     public function ingresoProductoKardex($id){
-        $detalle=DB::select(
-            "select ip.id_producto idingreso,p.id_producto idproducto,p.descripcion producto,um.descripcion unidad,ipd.cantidad cantidad,
-            ipd.precio,ipd.created_at fecha from ingreso_productos ip inner join ingreso_producto_detalle ipd on ipd.idingreso=ip.id_producto
-            inner join productos p on p.id_producto=ipd.idproducto inner join unidad_medida um on um.id_unidad_medida=p.id_unidad_medida
-            where ip.id_producto='".$id."'"
-            );
+                $detalle = DB::select("
+                SELECT ip.id_producto idingreso, p.id_producto idproducto,
+                p.descripcion producto, um.descripcion unidad, ipd.cantidad cantidad,
+                ipd.precio, ipd.created_at fecha
+                FROM ingreso_productos ip
+                INNER JOIN ingreso_producto_detalle ipd ON ipd.idingreso = ip.id_producto
+                INNER JOIN productos p ON p.id_producto = ipd.idproducto 
+                INNER JOIN unidad_medida um ON um.id_unidad_medida = p.id_unidad_medida
+                WHERE ip.id_producto = '".$id."'
+            ");
+
+            $operacion = Ingreso_Producto::find($id);
+
             foreach ($detalle as $key => $value) {
-                $existe_producto=DB::select("SELECT * from kardex where id_producto='".$value->idproducto."' ORDER BY id_kardex DESC LIMIT 1");
+                $existe_producto = DB::select("
+                    SELECT * FROM kardex WHERE id_producto = '".$value->idproducto."'
+                    ORDER BY id_kardex DESC LIMIT 1
+                ");
                 if(count($existe_producto)>0){
                     $unidad = new Kardex();
                     $unidad->id_producto  = $value->idproducto;
-                    $unidad->fecha  = $value->fecha;
+                    $unidad->fecha = $operacion->fecha;
                     $unidad->ingreso  = $value->cantidad;
                     $unidad->salida  = 0;
                     $unidad->saldo  = $value->cantidad+$existe_producto[0]->saldo;
@@ -91,7 +101,7 @@ class IngresoProductosController extends Controller
                     // dd($value);
                     $unidad = new Kardex();
                     $unidad->id_producto  = $value->idproducto;
-                    $unidad->fecha  = $value->fecha;
+                    $unidad->fecha = $operacion->fecha;
                     $unidad->ingreso  = $value->cantidad;
                     $unidad->salida  = 0;
                     $unidad->saldo  = $value->cantidad;
@@ -111,8 +121,11 @@ class IngresoProductosController extends Controller
         $productos = Ingreso_Producto::find($id);
         // dd($productos);
         $detalle=DB::select(
-            "select p.descripcion producto,um.descripcion unidad,ipd.cantidad cantidad from ingreso_productos ip inner join ingreso_producto_detalle ipd on ipd.idingreso=ip.id_producto
-            inner join productos p on p.id_producto=ipd.idproducto inner join unidad_medida um on um.id_unidad_medida=p.id_unidad_medida
+            "select p.descripcion producto,um.descripcion unidad,ipd.cantidad cantidad 
+            from ingreso_productos ip 
+            inner join ingreso_producto_detalle ipd on ipd.idingreso=ip.id_producto
+            inner join productos p on p.id_producto=ipd.idproducto 
+            inner join unidad_medida um on um.id_unidad_medida=p.id_unidad_medida
             where ip.id_producto='".$id."'"
             );
         

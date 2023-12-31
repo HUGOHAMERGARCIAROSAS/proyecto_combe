@@ -1,5 +1,6 @@
 $(function () {
     $('.js-basic-example').DataTable({
+        searching:false,
         language: {
             "decimal": "",
             "emptyTable": "No hay información",
@@ -21,7 +22,7 @@ $(function () {
             }
         }
     });
-
+    
     //Exportable table
     $('.js-exportable').DataTable({
         dom: 'Bfrtip',

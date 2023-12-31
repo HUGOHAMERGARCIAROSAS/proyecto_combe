@@ -56,6 +56,7 @@
                                 <li class="active"><a href="{{route('cotizaciones.index')}}">Cotizaciones</a></li>
                                 <li class="active"><a href="{{route('requerimientos.index')}}">Requerimientos</a></li>
                                 <li class="active"><a href="{{route('ingresoproductos.detalle')}}">Ingreso de Productos</a></li>
+                                <li class="active"><a href="{{route('salidaproductos.detalle')}}">Salida de Productos</a></li>
                             </ul>
                         </li>
                         

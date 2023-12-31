@@ -10,6 +10,6 @@ class Kardex extends Model
     protected $primaryKey = 'id_kardex';
     protected $fillable = [
         'id_producto', 'fecha', 'ingreso','salida','saldo',
-        'tipo','id_ingreso','precio','metodo','estado'
+        'tipo','id_ingreso','id_salida','precio','metodo','estado'
     ];
 }

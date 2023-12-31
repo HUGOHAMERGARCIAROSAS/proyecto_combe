@@ -3,7 +3,7 @@
         <div class="row clearfix" >
             <div class="col-lg-12">
                 <div class="card" style="background:white">
-                    <form v-on:submit.prevent="storeoperacion()" >
+                    <form v-on:submit.prevent="storeoperacion()">
                         <div class="header">
                             <div class="row">
                                  <div class="col-sm-2">
@@ -24,7 +24,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <h5><strong>Lista de Productos</strong></h5>
+                            <h5><strong>Lista de Productos para Salida</strong></h5>
                             <div class="col-lg-12" align="right">
                                 <button type="button" class="btn btn-success btn-elevate btn-pill"
                                         @click="abrirModalDetalleProducto()">Agregar Item
@@ -62,7 +62,7 @@
                         <div class="row">
                             <div class="col-sm-4"></div>
                             <div class="col-sm-4" align="center" >
-                                <button type="submit" class="btn btn-dark btn-block">GUARDAR</button>
+                                <button type="submit" class="btn btn-dark btn-block">REGISTRAR SALIDA</button>
                             </div>
                             <div class="col-sm-4"></div>
                         </div>
@@ -70,7 +70,7 @@
                     <br style="margin-bottom:2%">
                 </div>
             </div>
-            <detalle-modal-ingreso-component></detalle-modal-ingreso-component>
+            <detalle-modal-salida-component></detalle-modal-salida-component>
         </div>
     </div>
 </template>
@@ -115,7 +115,7 @@
             async storeoperacion(){
                 this.operacion.detalle_facturacion = this.detallefacturacion;
                 if(this.operacion.detalle_facturacion.length > 0 ){
-                    await axios.post('/store-ingreso-productos',this.operacion).then(({data}) => {
+                    await axios.post('/store-salida-productos',this.operacion).then(({data}) => {
                         if (data) {
                             this.$swal.fire({
                                 icon: 'success',
@@ -124,10 +124,10 @@
                                 showConfirmButton: true,
                                 timer: 2500
                             })
-                            window.location.href = '/operacionesListadoIngresoProductos';
+                            window.location.href = '/operacionesListadoSalidaProductos';
                         }
                         if (!data) {
-                            toastr.error('No se registro la compra, error en servidor!');
+                            toastr.error('No se registro la salida, error en servidor!');
                         }
                     }).catch((error) => {
                         console.error(error.response.data); 

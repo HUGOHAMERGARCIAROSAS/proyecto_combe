@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
@@ -69,6 +70,14 @@ Route::get('ingreso-productos-list-pdf/{id}', 'Admin\IngresoProductosController@
 Route::get('/ingreso-productos-detalle', 'Admin\IngresoProductosController@ingresoProductosDetalle')->name('ingresoproductos.detalle');
 Route::post('/ingreso-productos-a-kardex/{id}', 'Admin\IngresoProductosController@ingresoProductoKardex')->name('ingreso.producto.kardex');
 
+//SALIDA PRODUCTOS
+Route::get('/salida-productos-text', 'Admin\SalidaProductosController@salidaProductosText')->name('salidaproductos.index');
+Route::get('/operacionesListadoSalidaProductos', 'Admin\SalidaProductosController@listadoSalidaProductos')->name('listado.salida_productos');
+Route::post('/store-salida-productos', 'Admin\SalidaProductosController@storeSalidaProducto')->name('store.salida_productos');
+Route::get('/productos-api-search/{id}', 'Admin\SalidaProductosController@searchProducto')->name('productos.api.search.salida');
+Route::get('salida-productos-list-pdf/{id}', 'Admin\SalidaProductosController@exportPdf')->name('salida_productos.export.pdf');
+Route::get('/salida-productos-detalle', 'Admin\SalidaProductosController@salidaProductosDetalle')->name('salidaproductos.detalle');
+Route::post('/salida-productos-a-kardex/{id}', 'Admin\SalidaProductosController@salidaProductoKardex')->name('salida.producto.kardex');
 
 //COTIZACIONES
 Route::get('/cotizaciones_list', 'Admin\CotizacionesController@index')->name('cotizaciones.index');
