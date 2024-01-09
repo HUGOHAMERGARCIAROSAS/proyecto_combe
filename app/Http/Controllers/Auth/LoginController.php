@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -32,9 +33,20 @@ class LoginController extends Controller
 
     protected function attemptLogin(Request $request)
     {
-        return Auth::attempt(
-            $this->credentials($request) + ['estado' => 1],
-            $request->filled('remember')
-        );
+        $credentials = $this->credentials($request) + ['estado' => 1];
+
+        Log::info('Intento de inicio de sesion - metodo attemptlogin ejecutado');
+        Log::info("Credenciales utilizados para logearse; ", $credentials);
+
+
+
+        $authenticated = Auth::attempt($credentials, $request->filled('remember'));
+
+        if($authenticated){
+            Log::info('loggeo exitoso: ' . $credentials['email']);
+        }else {
+            Log::info('loggeo fallido: ' . $credentials['email']);
+        }
+        return $authenticated;
     }
 }

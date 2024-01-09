@@ -17,22 +17,30 @@
                         <a href="{{ route('productos.index') }}"class="btn-shadow mr-3 btn btn-success"><i class="fa fa-arrow-left"></i> Atras
                         </a>
                     </div>
-                    
                     <div style="text-align: center">
                         <h4 style="color:#B3A33B">{{$producto->descripcion}}</h4>
                     </div>
+                    <div class="container-fluid">
+
+                        <label for="fecha_inicio">Fecha Inicio:</label>
+                        <input type="date" id="fecha_inicio" name="fecha_inicio">
                     
+                        <label for="fecha_final">Fecha Fin:</label>
+                        <input type="date" id="fecha_final" name="fecha_final">
+                    
+                        <button onclick="filtrarKardex()">Filtrar</button>
+                    </div>
                 </div>           
                 <div class="body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover js-basic-example table-custom">
+                        <table id="tablaKardex" class="table table-bordered table-hover js-basic-example table-custom">
                             <thead>
                                 <tr>
                                     <th rowspan="2" class="text-center">ID</th>
                                     <th rowspan="2" class="text-center">Fecha</th>
                                     <th colspan="3" class="text-center">Entrada</th>
                                     <th colspan="1" class="text-center">Salida</th>
-                                    <th colspan="1" class="text-center">Saldo</th>
+                                    <th colspan="1" class="text-center">Stock</th>
                                 </tr>
                                 <tr>
                                     <td>UNIDADES</td>
@@ -73,6 +81,51 @@
 @section('js')
 @include('layouts.js')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+<script>
+    var kardexCompleto = {!! json_encode($kardex)!!};
+    function filtrarKardex(){
+        var fechaInicio = document.getElementById("fecha_inicio").value;
+        var fechaFin = document.getElementById("fecha_final").value;
+
+        var kardexFiltrado = kardexCompleto.filter(function(item){
+            return item.fecha >= fechaInicio && item.fecha <= fechaFin;
+        });
+
+        var tabla = "<thead>" +
+                "<tr>" +
+                "<th rowspan='2' class='text-center'>ID</th>" +
+                "<th rowspan='2' class='text-center'>Fecha</th>" +
+                "<th colspan='3' class='text-center'>Entrada</th>" +
+                "<th colspan='1' class='text-center'>Salida</th>" +
+                "<th colspan='1' class='text-center'>Stock</th>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>UNIDADES</td>" +
+                "<td>COSTO U.</td>" +
+                "<td>TOTAL</td>" +
+                "<td>UNIDADES</td>" +
+                "<td>TOTAL</td>" +
+                "</tr>" +
+                "</thead><tbody>";
+
+        kardexFiltrado.forEach(function(item,index){
+            tabla +="<tr>";
+            tabla +="<td>" + (index + 1) + "</td>";
+            tabla +="<td>" + item.fecha + "</td>";
+
+            tabla +="<td>" + (item.tipo == 1 ? item.ingreso : 0) + "</td>";
+            tabla +="<td>" + (item.tipo == 1 ? item.precio: 0) + "</td>";
+            tabla +="<td>" + (item.tipo == 1 ? item.ingreso * item.precio : 0) + "</td>";
+
+            tabla +="<td>" + (item.tipo == 2 ? item.salida:0) +"</td>";
+            tabla +="<td>" + item.saldo + "</td>";
+            tabla +="</tr>";
+        });
+
+        document.getElementById("tablaKardex").innerHTML = tabla;
+    }
+</script>
 @if(session('guardar')=='ok')
       <script>  
           swal({

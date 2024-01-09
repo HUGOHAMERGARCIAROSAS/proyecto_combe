@@ -33,12 +33,9 @@ Route::put('categorias/delete/{id}', 'Admin\CategoryController@update1')->name('
 Route::resource('/unidades', 'Admin\UnidadMedidaController')->names('unidades');
 Route::put('unidades/delete/{id}', 'Admin\UnidadMedidaController@update1')->name('unidades.update1');
 
-
 // PRODUCTOS
 Route::resource('/productos', 'Admin\ProductoController')->names('productos');
 Route::put('productos/delete/{id}', 'Admin\ProductoController@update1')->name('productos.update1');
-
-
 Route::get('ver-kardex-producto/{id}','Admin\ProductoController@kardexProducto')->name('productos.kardex');
 
 //ORDENES

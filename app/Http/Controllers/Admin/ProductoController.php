@@ -8,6 +8,7 @@ use App\Models\Productos;
 use App\Models\UnidadMedida;
 use App\Models\Category;
 use DB;
+
 class ProductoController extends Controller
 {
     /**
@@ -36,7 +37,7 @@ class ProductoController extends Controller
             );
         return view('productos.kardex')->with(compact('producto','kardex'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
